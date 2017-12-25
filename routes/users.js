@@ -16,8 +16,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/create', function(req, res, next) {
-  res.render('create');
+  res.render('create',{user: new User()});
 });
+
+
+router.post('/create', function(req, res, next) {
+
+  let user = new User(req.body);
+  console.log(req.body);
+  user.save(req.body,function(err) {
+    if (err) throw err;
+    res.redirect('../users');
+  });
+});
+
 
 router.post('/',function(req,res,next){
   
