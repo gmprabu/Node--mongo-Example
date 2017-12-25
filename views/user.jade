@@ -1,0 +1,9 @@
+extends layout
+
+block content 
+  h1 Users
+  hr
+  a(href='/users/create', class='btn btn-primary btn-sm') Create new user
+  ul
+    each user in userList
+        li=user.name
